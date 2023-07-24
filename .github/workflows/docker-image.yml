@@ -36,7 +36,7 @@ jobs:
           token: ${{ secrets.GITHAB_TOKEN }}
       - name: 2. Chage Docker Tag
         run: |
-          sed -i "s/image: caroline73\/node-app:.*/images: caroline73\/node-app:${{ github.sha }}/g" hostservice-dp.yaml
+          sed -i "s/image: caroline73\/node-app:.*/images: caroline73\/node-app:${{ github.sha }}/g" hostservice-deploy.yaml
           git config --global user.email "caroine73@naver.com"
           git config --global user.name "caroline733"
           git commit -am "triggered by github action"
