@@ -1,0 +1,11 @@
+name: Host Service CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: ["*.js"] 
+    # 자바 스크립트 변경 시~
+
+jobs:
+  buildImage:
+    runs-on: ubuntu-latest
