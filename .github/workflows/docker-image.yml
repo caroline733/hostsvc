@@ -25,4 +25,19 @@ jobs:
         with:
           push: true
           tags: caroline73/hostservice:${{ github.sha }} #latest 절대 쓰면 안 됨 
-
+  updateYaml:
+    runs-on: ubuntu-latest
+    needs: buildImage
+    steps:
+      - name: 1. Checkout
+        uses: actions/checkout@v3
+        with:
+          repositry: 'caroline73/hostsvc-cd'
+          token: ${{ secrets.GITHAB_TOKEN }}
+      - name: 2. Chage Docker Tag
+        run: |
+          sed "s/image: caroline73\/node-app:.*/images: caroline73\/node-app:${{ github.sha }}/g"
+          git config --global user.email "caroine73@naver.com"
+          git config --global user.name "caroline733"
+          git commit -am "triggered by github action"
+          git push origin main
