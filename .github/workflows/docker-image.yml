@@ -32,7 +32,7 @@ jobs:
       - name: 1. Checkout
         uses: actions/checkout@v3
         with:
-          repositry: 'caroline73/hostsvc-cd'
+          repositry: 'caroline733/hostsvc-cd'
           token: ${{ secrets.GITHAB_TOKEN }}
       - name: 2. Chage Docker Tag
         run: |
